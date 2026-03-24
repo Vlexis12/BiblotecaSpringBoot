@@ -4,6 +4,8 @@ import com.Bibloteca.Proyecto.De.Bibloteca.Model.Libro;
 import com.Bibloteca.Proyecto.De.Bibloteca.Repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Year;
 import java.util.List;
 
 @Service
@@ -27,6 +29,14 @@ public class LibroService {
     public Libro updateLibro(Libro libro) {
         return libroRepository.actualizar(libro);
     }
+
+    public List<Libro> getTotalLibrosPorAnio(int year) {return libroRepository.buscarAnio(year); }
+
+    public List<Libro> buscarPorAutor(String autor) { return libroRepository.BuscarPorAutor(autor);}
+
+    public Libro getMoreOld(){ return libroRepository.LibroMasAntiguo();}
+
+    public Libro getMoreNew(){ return libroRepository.LibroMasNuevo();}
 
     public String deleteLibro(int id) {
         libroRepository.eliminar(id);

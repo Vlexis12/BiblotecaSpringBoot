@@ -30,13 +30,23 @@ public class LibroController {
         return libroService.getLibroId(id);
     }
 
+    @GetMapping("AñoLista")
+    public List<Libro> getTotalLibrosAnio(@PathVariable int year){return libroService.getTotalLibrosPorAnio(year); }
+
     @PutMapping("{id}")
-    public Libro actualizarLibro(@PathVariable int id, @RequestBody Libro libro) {
-        return libroService.updateLibro(libro);
-    }
+    public Libro actualizarLibro(@PathVariable int id, @RequestBody Libro libro) { return libroService.updateLibro(libro); }
 
     @DeleteMapping("{id}")
     public String eliminarLibro(@PathVariable int id) {
         return libroService.deleteLibro(id);
     }
+
+    @GetMapping("/buscar/autor/{autor:.+}")
+    public List<Libro> buscarPorAutor(@PathVariable String autor) { return libroService.buscarPorAutor(autor); }
+
+    @GetMapping("/reportes/masAntiguo")
+    public Libro getMoreOld(){ return libroService.getMoreOld();}
+
+    @GetMapping("/reportes/masNuevo")
+    public Libro getMoreNew(){ return libroService.getMoreNew();}
 }
