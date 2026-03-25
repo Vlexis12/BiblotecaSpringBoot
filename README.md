@@ -2,48 +2,55 @@
 
 ¡Bienvenido al motor central de nuestra biblioteca! Este proyecto es una **API REST** construida con **Spring Boot** que permite administrar un catálogo de libros y gestionar las solicitudes de préstamos de forma dinámica.
 
+---
+
 ## 🚀 Tecnologías Utilizadas
-* **Java 17+**: El lenguaje del café.
-* **Spring Boot 3.x**: El framework para aplicaciones Java modernas.
-* **Maven**: Nuestro director de orquesta para dependencias.
-* **Postman**: Para probar que todo funcione como reloj suizo.
+
+*   **Java 17+**: El lenguaje base del proyecto.
+*   **Spring Boot 3.x**: Framework para el desarrollo de la API.
+*   **Maven**: Gestor de dependencias y construcción.
+*   **Postman**: Herramienta para pruebas de endpoints.
 
 ---
 
 ## 🛠️ Estructura del Proyecto
+
 El código sigue la arquitectura de capas para mantener las cosas ordenadas:
-* **Controller**: Donde recibimos las peticiones (la cara al público).
-* **Service**: Donde vive la lógica "inteligente" (el cerebro).
-* **Repository**: Gestión de datos en memoria (nuestra "caja de zapatos" temporal).
-* **Model**: La definición de nuestros objetos (Libro y Préstamos)[cite: 1].
+
+*   **Controller**: Gestión de peticiones HTTP y rutas.[cite: 1]
+*   **Service**: Lógica de negocio y procesamiento de datos.[cite: 1]
+*   **Repository**: Manejo de persistencia (en este caso, listas en memoria).[cite: 1]
+*   **Model**: Definición de las entidades (Libro y Prestamo).[cite: 1]
 
 ---
 
 ## 📖 Endpoints Principales
 
 ### 📕 Gestión de Libros (`/api/v1/libros`)
+
 | Método | Path | Descripción |
 | :--- | :--- | :--- |
-| **GET** | `/` | Lista todos los libros. |
+| **GET** | `/` | Lista todos los libros registrados. |
 | **POST** | `/` | Agrega un nuevo libro al catálogo. |
-| **GET** | `/buscar/autor/{autor}` | Busca libros por autor. |
-| **GET** | `/reportes/masNuevo` | Encuentra el libro más reciente. |
-| **GET** | `/reportes/masAntiguo` | Encuentra el libro más viejo. |
-| **GET** | `/reportes/ordenados` | Lista libros ordenados cronológicamente. |
+| **GET** | `/buscar/autor/{autor}` | Busca libros por un autor específico. |
+| **GET** | `/reportes/masNuevo` | Muestra el libro con la fecha más reciente. |
+| **GET** | `/reportes/masAntiguo` | Muestra el libro más antiguo registrado. |
 
 ### 💳 Gestión de Préstamos (`/api/v1/prestamos`)[cite: 1]
-| Método | Path | Estado | Descripción |
+
+| Método | Path | Código | Descripción |
 | :--- | :--- | :--- | :--- |
-| **GET** | `/` | 200 OK | Lista todas las solicitudes[cite: 1]. |
-| **POST** | `/` | 201 Created | Registra un nuevo préstamo[cite: 1]. |
-| **GET** | `/{id}` | 200 OK | Obtiene detalles por ID[cite: 1]. |
-| **PUT** | `/{id}` | 200 OK | Actualiza datos de un préstamo[cite: 1]. |
-| **DELETE** | `/{id}` | 204 No Content | Elimina un registro del sistema[cite: 1]. |
+| **GET** | `/` | 200 OK | Recupera todos los préstamos.[cite: 1] |
+| **POST** | `/` | 201 Created | Crea un nuevo registro de préstamo.[cite: 1] |
+| **GET** | `/{id}` | 200 OK | Recupera un préstamo por su ID.[cite: 1] |
+| **PUT** | `/{id}` | 200 OK | Actualiza los datos de un préstamo.[cite: 1] |
+| **DELETE** | `/{id}` | 204 No Content | Elimina un préstamo del sistema.[cite: 1] |
 
 ---
 
 ## 📝 Ejemplo de JSON para Préstamos (POST)
-Copia esto en tu **Body > raw > JSON** de Postman para probar:
+
+Para registrar un préstamo en Postman, utiliza el siguiente cuerpo en formato JSON:[cite: 1]
 
 ```json
 {
